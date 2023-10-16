@@ -13,13 +13,14 @@
 #define MAX_ARGS 64
 #define MAX_PATH_LENGTH 1024
 
+extern char **environ;
 
 /* prototypes */
 
 void search_file_in_path(const char *filename, const char *path);
 void executeCommand(char *command, char *argv[]);
 void execute(char *argv[]);
-void exec(char* command);
+void exec(char *command);
 char *path(char *command);
 char *pathArg(char *commandArg);
 void executeCommandArg(char *commandArg, char *argv[]);
@@ -46,8 +47,8 @@ int handle_custom_str(va_list args);
 /* custom functions */
 
 void _puts(const char *str);
-char* _getenv(const char* name);
-int _snprintf(char* buffer, size_t size, const char* format, ...);
+char *_getenv(const char *name);
+int _snprintf(char *buffer, size_t size, const char *format, ...);
 int _vsnprintf(char *str, size_t size, const char *format, va_list args);
 int _strcmp(const char *s1, const char *s2);
 int _strncmp(const char *s1, const char *s2, size_t n);
