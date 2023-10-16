@@ -19,7 +19,7 @@ void execute(char *argv[])
 		fflush(stdout);
 		if (getline(&command, &len, stdin) == -1)
 		{
-			printf("\n");
+			_printf("\n");
 			break;
 		}
 		command[_strcspn(command, "\n")] = '\0';

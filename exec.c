@@ -71,7 +71,7 @@ char *pathArg(char *commandArg)
 		{
 			if (arg)
 			{
-				size_t result_len = strlen(file_path) + strlen(arg) + 2;
+				size_t result_len = _strlen(file_path) + _strlen(arg) + 2;
 				char *res = (char *)malloc(result_len);
 
 				_snprintf(res, result_len, "%s %s", file_path, arg);
