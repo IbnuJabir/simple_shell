@@ -28,7 +28,7 @@ int _strncmp(const char *s1, const char *s2, size_t n)
  * @s: The string to search
  * @c: The character to locate
  *
- * Return: A pointer to the first occurrence of the character c in the string s.
+ * Return: A pointer to the first occurrence of the char c.
  */
 char *_strchr(const char *s, int c)
 {

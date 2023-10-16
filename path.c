@@ -5,23 +5,29 @@
  *
  * @command: command line
  *
+ * Return: the path of a command
+ *
  **/
 
 char *path(char *command)
 {
-	char* path = _getenv("PATH");
-	char* pathCopy = _strdup(path);
+	char *path = _getenv("PATH");
+	char *pathCopy = _strdup(path);
 
-	if(_strchr(command, ' ') == NULL)
+	if (_strchr(command, ' ') == NULL)
 	{
-		char* token = strtok(pathCopy, ":");
+		char *token = strtok(pathCopy, ":");
+
 		while (token != NULL)
 		{
 			char file_path[256];
+
 			_snprintf(file_path, sizeof(file_path), "%s/%s", token, command);
 
-			if (access(file_path, F_OK) == 0) {
-				char* ress = _strdup(file_path);
+			if (access(file_path, F_OK) == 0)
+			{
+				char *ress = _strdup(file_path);
+
 				free(pathCopy);
 				return (ress);
 			}
@@ -32,7 +38,8 @@ char *path(char *command)
 	}
 	else
 	{
-		char* cm = pathArg(command);
+		char *cm = pathArg(command);
+
 		return (cm);
 	}
 }

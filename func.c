@@ -82,7 +82,7 @@ int _vsnprintf(char *str, size_t size, const char *format, va_list args)
 						*str++ = '-';
 						++written;
 						arg = -arg;
-					//	sign = 1;
+					/*	sign = 1;  */
 					}
 
 					value = (unsigned int)arg;

@@ -1,14 +1,19 @@
 #include "shell.h"
+/**
+ * execute - Entry
+ *
+ */
 
 void execute(void)
 {
 	char *command = NULL;
 	size_t len = 0;
 	char firstChar;
-	
+
 	while (1)
 	{
-		const char* msg = "#cisfun ";
+		const char *msg = "#cisfun ";
+
 		_puts(msg);
 		fflush(stdout);
 		if (getline(&command, &len, stdin) == -1)
@@ -32,6 +37,7 @@ void execute(void)
 		else
 		{
 			char *str = path(command);
+
 			if (_strchr(str, ' ') != NULL)
 				executeCommand(str);
 			else

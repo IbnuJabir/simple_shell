@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * executeCommand - ...
+ * executeCommandArg - ...
  *
  * @commandArg: a command argument
  *
@@ -13,7 +13,7 @@ void executeCommandArg(char *commandArg)
 	char *arguments[256];
 	char *token = strtok(commandArg, " ");
 
-	while(token != NULL)
+	while (token != NULL)
 	{
 		arguments[i] = token;
 		token = strtok(NULL, " ");
@@ -25,10 +25,11 @@ void executeCommandArg(char *commandArg)
 	{
 		_printf("No command specified\n");
 		return;
-        }
+	}
 
 	pid = fork();
-	if (pid == 0) {
+	if (pid == 0)
+	{
 		execve(arguments[0], arguments, NULL);
 		_printf("%s: No such file or directory\n", global_argv[0]);
 		exit(1);
@@ -48,6 +49,7 @@ void executeCommandArg(char *commandArg)
  *
  * @commandArg: a command argument
  *
+ * Return: the path of argument
  */
 
 char *pathArg(char *commandArg)
@@ -60,12 +62,16 @@ char *pathArg(char *commandArg)
 	while (token != NULL)
 	{
 		char file_path[256];
+
 		_snprintf(file_path, sizeof(file_path), "%s/%s", token, command);
 
-		if (access(file_path, F_OK) == 0) {
-			if (arg) {
+		if (access(file_path, F_OK) == 0)
+		{
+			if (arg)
+			{
 				size_t result_len = strlen(file_path) + strlen(arg) + 2;
-				char *res = (char*)malloc(result_len);
+				char *res = (char *)malloc(result_len);
+
 				_snprintf(res, result_len, "%s %s", file_path, arg);
 				free(commandArg);
 				return (res);

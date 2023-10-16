@@ -1,7 +1,13 @@
 #include "shell.h"
-
-char **global_argv;
-int global_argc;
+/**
+ * main - Entry point
+ *
+ * @argc: number of arguments
+ *
+ * @argv: array that contain arguments
+ *
+ * Return: always 0
+ */
 
 int main(int argc, char *argv[])
 {
@@ -9,5 +15,5 @@ int main(int argc, char *argv[])
 	global_argv = argv;
 
 	execute();
-	return 0;
+	return (0);
 }

@@ -5,13 +5,14 @@
  * @command: command
  */
 
-void executeCommand(char* command)
+void executeCommand(char *command)
 {
-	char* ar[MAX_ARGS];
+	char *ar[MAX_ARGS];
 	int i = 0;
 	pid_t pid;
 
-	char* token = strtok(command, " \n");
+	char *token = strtok(command, " \n");
+
 	while (token != NULL)
 	{
 		ar[i++] = token;
