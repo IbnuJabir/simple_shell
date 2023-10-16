@@ -1,11 +1,6 @@
 #ifndef SHELL_H
 #define SHELL_H
 
-struct GlobalData {
-	int argc;
-	char** argv;
-};
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -22,13 +17,12 @@ struct GlobalData {
 /* prototypes */
 
 void search_file_in_path(const char *filename, const char *path);
-void executeCommand(char *command);
-void execute(void);
-void executeCmd(char *command, char *token);
+void executeCommand(char *command, char *argv[]);
+void execute(char *argv[]);
 void exec(char* command);
 char *path(char *command);
 char *pathArg(char *commandArg);
-void executeCommandArg(char *commandArg);
+void executeCommandArg(char *commandArg, char *argv[]);
 void printEnvironment(void);
 
 /*  break    */

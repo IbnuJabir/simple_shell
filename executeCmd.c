@@ -5,7 +5,7 @@
  * @command: command
  */
 
-void executeCommand(char *command)
+void executeCommand(char *command, char *argv[])
 {
 	char *ar[MAX_ARGS];
 	int i = 0;
@@ -29,7 +29,7 @@ void executeCommand(char *command)
 	if (pid == 0)
 	{
 		execve(ar[0], ar, NULL);
-		_printf("%s: No such file or directory\n", command);
+		_printf("%s: No such file or directory\n", argv[0]);
 		exit(1);
 	}
 	else

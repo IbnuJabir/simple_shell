@@ -1,7 +1,5 @@
 #include "shell.h"
 
-extern struct GlobalData globalData;
-
 /**
  * executeCommandArg - ...
  *
@@ -9,7 +7,7 @@ extern struct GlobalData globalData;
  *
  */
 
-void executeCommandArg(char *commandArg)
+void executeCommandArg(char *commandArg, char *argv[])
 {
 	int i = 0;
 	pid_t pid;
@@ -34,7 +32,7 @@ void executeCommandArg(char *commandArg)
 	if (pid == 0)
 	{
 		execve(arguments[0], arguments, NULL);
-		_printf("%s: No such file or directory\n", globalData.argv);
+		_printf("%s: No such file or directory\n", argv[0]);
 		exit(1);
 	}
 	else if (pid > 0)

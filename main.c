@@ -9,13 +9,10 @@
  * Return: always 0
  */
 
-struct GlobalData globalData;
-
 int main(int argc, char *argv[])
 {
-	globalData.argc = argc;
-	globalData.argv = argv;
+	(void)(argc);
 
-	execute();
+	execute(argv);
 	return (0);
 }

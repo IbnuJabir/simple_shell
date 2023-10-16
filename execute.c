@@ -4,7 +4,7 @@
  *
  */
 
-void execute(void)
+void execute(char *argv[])
 {
 	char *command = NULL;
 	size_t len = 0;
@@ -30,18 +30,18 @@ void execute(void)
 		else if (firstChar == '/')
 		{
 			if (_strchr(command, ' ') != NULL)
-				executeCommand(command);
+				executeCommand(command, argv);
 			else
-				executeCommandArg(command);
+				executeCommandArg(command, argv);
 		}
 		else
 		{
 			char *str = path(command);
 
 			if (_strchr(str, ' ') != NULL)
-				executeCommand(str);
+				executeCommand(str, argv);
 			else
-				executeCommandArg(str);
+				executeCommandArg(str, argv);
 		}
 	}
 	free(command);
