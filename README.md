@@ -49,8 +49,5 @@ For more information on how to use the Simple Shell, refer to the man page or do
 ## Contributors
 The Simple Shell project is developed and maintained by<strong>[@IbnuJabir](https://github.com/IbnuJabir)</strong> and <strong>@chifundo365</strong> in ALX SE program team project. Contributions and feedback are welcome.
 
-## License
-This project is licensed under the MIT License. See the LICENSE file for more details.
-
 ## Contact
-For any inquiries or suggestions regarding the Simple Shell project, please contact at [@IbnuJabir](https://github.com/IbnuJabir)
+For any inquiries or suggestions regarding the Simple Shell project, please contact at <strong>[@IbnuJabir](https://github.com/IbnuJabir)</strong>
