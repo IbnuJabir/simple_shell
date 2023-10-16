@@ -1,4 +1,7 @@
 #include "shell.h"
+
+extern struct GlobalData globalData;
+
 /**
  * executeCommandArg - ...
  *
@@ -31,7 +34,7 @@ void executeCommandArg(char *commandArg)
 	if (pid == 0)
 	{
 		execve(arguments[0], arguments, NULL);
-		_printf("%s: No such file or directory\n", global_argv[0]);
+		_printf("%s: No such file or directory\n", globalData.argv);
 		exit(1);
 	}
 	else if (pid > 0)
@@ -79,7 +82,7 @@ char *pathArg(char *commandArg)
 			else
 			{
 				free(commandArg);
-				return (strdup(file_path));
+				return (_strdup(file_path));
 			}
 		}
 		token = strtok(NULL, ":");

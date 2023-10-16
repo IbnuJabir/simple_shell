@@ -1,6 +1,11 @@
 #ifndef SHELL_H
 #define SHELL_H
 
+struct GlobalData {
+	int argc;
+	char** argv;
+};
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -13,8 +18,6 @@
 #define MAX_ARGS 64
 #define MAX_PATH_LENGTH 1024
 
-extern char **global_argv;
-extern int global_argc;
 
 /* prototypes */
 
