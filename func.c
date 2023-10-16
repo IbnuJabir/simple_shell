@@ -11,14 +11,14 @@ extern char **environ;
 char *_getenv(const char *name)
 {
 	extern char **environ;
-	int name_length = _strlen(name);
+	int n_len = _strlen(name);
 	int i;
 
 	for (i = 0; environ[i] != NULL; i++)
 	{
-		if (_strncmp(environ[i], name, name_length) == 0 && environ[i][name_length] == '=')
+		if (_strncmp(environ[i], name, n_len) == 0 && environ[i][n_len] == '=')
 		{
-			return (environ[i] + name_length + 1);
+			return (environ[i] + n_len + 1);
 		}
 	}
 
@@ -32,7 +32,7 @@ char *_getenv(const char *name)
  * @format: Format string.
  * @args: Variable arguments list.
  *
- * Return: The number of characters written to the buffer (excluding the null terminator).
+ * Return: The number of characters written to the buffer.
  */
 int _vsnprintf(char *str, size_t size, const char *format, va_list args)
 {
@@ -50,6 +50,7 @@ int _vsnprintf(char *str, size_t size, const char *format, va_list args)
 				case 's':
 				{
 					char *arg = va_arg(args, char *);
+
 					while (*arg && written < capacity)
 					{
 						*str++ = *arg++;
