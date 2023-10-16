@@ -47,7 +47,7 @@ The Simple Shell supports standard shell commands and syntax. Here are some exam
 For more information on how to use the Simple Shell, refer to the man page or documentation included in the repository.
 
 ## Contributors
-The Simple Shell project is developed and maintained by<strong>[@IbnuJabir]</strong>(https://github.com/IbnuJabir) and <strong>@chifundo365</strong> in ALX SE program team project. Contributions and feedback are welcome.
+The Simple Shell project is developed and maintained by<strong>[@IbnuJabir](https://github.com/IbnuJabir)</strong> and <strong>@chifundo365</strong> in ALX SE program team project. Contributions and feedback are welcome.
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for more details.
