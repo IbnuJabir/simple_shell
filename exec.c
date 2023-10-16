@@ -5,6 +5,7 @@
  *
  * @commandArg: a command argument
  *
+ * @argv: a comand argument
  */
 
 void executeCommandArg(char *commandArg, char *argv[])

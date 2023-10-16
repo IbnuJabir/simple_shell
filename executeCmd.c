@@ -3,6 +3,8 @@
  * executeCommand - Entry
  *
  * @command: command
+ *
+ * @argv: a comand argument
  */
 
 void executeCommand(char *command, char *argv[])
