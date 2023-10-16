@@ -3,20 +3,6 @@
 extern char **environ;
 
 /**
- * _puts - Prints a string followed by a newline character.
- * @str: The string to be printed.
- */
-void _puts(const char *str)
-{
-	int i = 0;
-
-	while (str[i] != '\0')
-	{
-		_putchar(str[i]);
-		i++;
-	}
-}
-/**
  * _getenv - Retrieves the value of an environment variable.
  * @name: The name of the environment variable.
  *
@@ -68,38 +54,6 @@ int _vsnprintf(char *str, size_t size, const char *format, va_list args)
 					{
 						*str++ = *arg++;
 						++written;
-					}
-					break;
-				}
-				case 'd':
-				{
-					int arg = va_arg(args, int);
-					int count = 0;
-					unsigned int value;
-
-					if (arg < 0)
-					{
-						*str++ = '-';
-						++written;
-						arg = -arg;
-					/*	sign = 1;  */
-					}
-
-					value = (unsigned int)arg;
-					do {
-						++count;
-						value /= 10;
-					} while (value);
-
-					if (count <= capacity - written)
-					{
-						char *digit = str + count - 1;
-						do {
-							*digit-- = '0' + (arg % 10);
-							arg /= 10;
-							++written;
-						} while (arg);
-						str += count;
 					}
 					break;
 				}

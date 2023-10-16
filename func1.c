@@ -1,6 +1,20 @@
 #include "shell.h"
 
 /**
+ * _puts - Prints a string followed by a newline character.
+ * @str: The string to be printed.
+ */
+void _puts(const char *str)
+{
+	int i = 0;
+
+	while (str[i] != '\0')
+	{
+		_putchar(str[i]);
+		i++;
+	}
+}
+/**
  * _strncmp - Compare two strings up to a specified length
  * @s1: The first string to compare
  * @s2: The second string to compare
