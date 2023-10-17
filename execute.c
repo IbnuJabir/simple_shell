@@ -9,16 +9,10 @@ void execute(char *argv[])
 {
 	char *command = NULL;
 	size_t len = 0;
-	char firstChar;
 
 	while (1)
 	{
-		const char *msg = "#cisfun ";
-
-		if (isatty(_fileno(stdin)))
-		{ 	_puts(msg);			
-			fflush(stdout);
-		}
+		print_prompt();
 
 		if (getline(&command, &len, stdin) == -1)
 		{
@@ -26,30 +20,19 @@ void execute(char *argv[])
 			break;
 		}
 		command[_strcspn(command, "\n")] = '\0';
-		firstChar = command[0];
-		
+
 		if (*command == '\0')
 			continue;
 
-		if (_strcmp(command, "exit") == 0)
-			exit(0);
-		else if (_strcmp(command, "env") == 0)
-			printEnvironment();
-		else if (firstChar == '/' || (firstChar == '.' && command[1] == '/'))
-		{	if (_strchr(command, ' ') != NULL)
-				executeCommand(command, argv);
-			else
-			executeCommandArg(command, argv);
-		}
-		else
-		{
-			char *str = path(command);
+		exit_shell(command);
 
-			if (_strchr(str, ' ') != NULL)
-				executeCommand(str, argv);
-			else
-				executeCommandArg(str, argv);
+		if (_strcmp(command, "env") == 0)
+		{
+			printEnvironment();
 		}
+
+		is_command_executable(command, argv);
 	}
+
 	free(command);
 }

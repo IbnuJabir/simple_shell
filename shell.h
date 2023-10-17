@@ -26,6 +26,10 @@ char *pathArg(char *commandArg);
 void executeCommandArg(char *commandArg, char *argv[]);
 void printEnvironment(void);
 int _fileno(FILE *stream);
+void print_prompt(void);
+void exit_shell(char *command);
+void is_command_executable(char *command, char **argv);
+
 
 
 /*  break    */
