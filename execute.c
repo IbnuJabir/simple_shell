@@ -28,6 +28,10 @@ void execute(char *argv[])
 		}
 		command[_strcspn(command, "\n")] = '\0';
 		firstChar = command[0];
+		
+		if (*command == '\0')
+			continue;
+
 		if (_strcmp(command, "exit") == 0)
 			exit(0);
 		else if (_strcmp(command, "env") == 0)

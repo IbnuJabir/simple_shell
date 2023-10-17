@@ -8,17 +8,19 @@
  * @argv: a comand argument
  */
 
+extern char **environ;
+
 void executeCommandArg(char *commandArg, char *argv[])
 {
 	int i = 0;
 	pid_t pid;
 	char *arguments[256];
-	char *token = strtok(commandArg, " ");
+	char *token = strtok(commandArg, " \t");
 
 	while (token != NULL)
 	{
 		arguments[i] = token;
-		token = strtok(NULL, " ");
+		token = strtok(NULL, " \t");
 		i++;
 	}
 	arguments[i] = NULL;
@@ -32,9 +34,11 @@ void executeCommandArg(char *commandArg, char *argv[])
 	pid = fork();
 	if (pid == 0)
 	{
-		execve(arguments[0], arguments, NULL);
-		_printf("%s: No such file or directory\n", argv[0]);
-		exit(1);
+		if(execve(arguments[0], arguments, environ) == -1)
+		{	
+			perror(argv[0]);	
+			exit(1);
+		}
 	}
 	else if (pid > 0)
 	{
@@ -42,7 +46,7 @@ void executeCommandArg(char *commandArg, char *argv[])
 	}
 	else
 	{
-		perror("fork");
+		perror(argv[0]);
 		exit(1);
 	}
 }
@@ -56,7 +60,8 @@ void executeCommandArg(char *commandArg, char *argv[])
 
 char *pathArg(char *commandArg)
 {
-	char *path = _getenv("PATH");
+	char *original_path = _getenv("PATH");
+	char *path = _strdup(original_path);
 	char *command = strtok(commandArg, " ");
 	char *arg = strtok(NULL, "\n");
 	char *token = strtok(path, ":");
@@ -75,17 +80,28 @@ char *pathArg(char *commandArg)
 				char *res = (char *)malloc(result_len);
 
 				_snprintf(res, result_len, "%s %s", file_path, arg);
-				free(commandArg);
+				
+				if (commandArg)
+					free(commandArg);
+	
+				if (path)
+					free(path);
+
 				return (res);
 			}
 			else
-			{
-				free(commandArg);
+			{	if (commandArg)
+					free(commandArg);
+
+				if (path)
+					free(path);
+
 				return (_strdup(file_path));
 			}
 		}
 		token = strtok(NULL, ":");
 	}
 	free(commandArg);
+	free(path);
 	return (NULL);
 }

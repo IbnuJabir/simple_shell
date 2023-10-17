@@ -7,6 +7,8 @@
  * @argv: a comand argument
  */
 
+extern char **environ;
+
 void executeCommand(char *command, char *argv[])
 {
 	char *ar[MAX_ARGS];
@@ -30,9 +32,13 @@ void executeCommand(char *command, char *argv[])
 	}
 	if (pid == 0)
 	{
-		execve(ar[0], ar, NULL);
-		_printf("%s: No such file or directory\n", argv[0]);
-		exit(1);
+		if (execve(ar[0], ar, environ) == -1)
+		{
+			perror(argv[0]);
+			exit(1);
+		}
+
+		exit(0);
 	}
 	else
 	{

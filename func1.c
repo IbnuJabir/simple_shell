@@ -46,6 +46,11 @@ int _strncmp(const char *s1, const char *s2, size_t n)
  */
 char *_strchr(const char *s, int c)
 {
+	if (s == NULL)
+	{
+		return (NULL);
+	}
+
 	while (*s != '\0')
 	{
 		if (*s == c)
