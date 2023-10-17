@@ -27,7 +27,7 @@ void executeCommandArg(char *commandArg, char *argv[])
 
 	if (arguments[0] == NULL)
 	{
-		_printf("No command specified\n");
+		perror(argv[0]);
 		return;
 	}
 

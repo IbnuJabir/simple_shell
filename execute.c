@@ -16,8 +16,7 @@ void execute(char *argv[])
 		const char *msg = "#cisfun ";
 
 		if (isatty(_fileno(stdin)))
-		{
-			_puts(msg);
+		{ 	_puts(msg);			
 			fflush(stdout);
 		}
 
@@ -36,12 +35,11 @@ void execute(char *argv[])
 			exit(0);
 		else if (_strcmp(command, "env") == 0)
 			printEnvironment();
-		else if (firstChar == '/')
-		{
-			if (_strchr(command, ' ') != NULL)
+		else if (firstChar == '/' || (firstChar == '.' && command[1] == '/'))
+		{	if (_strchr(command, ' ') != NULL)
 				executeCommand(command, argv);
 			else
-				executeCommandArg(command, argv);
+			executeCommandArg(command, argv);
 		}
 		else
 		{
