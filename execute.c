@@ -15,8 +15,12 @@ void execute(char *argv[])
 	{
 		const char *msg = "#cisfun ";
 
-		_puts(msg);
-		fflush(stdout);
+		if (isatty(fileno(stdin)))
+		{
+			_puts(msg);
+			fflush(stdout);
+		}
+
 		if (getline(&command, &len, stdin) == -1)
 		{
 			_printf("\n");
