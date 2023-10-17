@@ -25,6 +25,8 @@ char *path(char *command);
 char *pathArg(char *commandArg);
 void executeCommandArg(char *commandArg, char *argv[]);
 void printEnvironment(void);
+int _fileno(FILE *stream);
+
 
 /*  break    */
 
