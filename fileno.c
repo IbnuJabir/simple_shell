@@ -5,7 +5,7 @@
  *  @stream: the stream
  *  Description: find fd no from the _fileno member of FILE structure
  *  Return: file descriptor number or -1 if the stream is not in fd table
- */
+ *
 
 int _fileno(FILE *stream)
 {
@@ -15,4 +15,4 @@ int _fileno(FILE *stream)
 	}
 
 	return (stream->_fileno);
-}
+}*/

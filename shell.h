@@ -63,5 +63,8 @@ char *_strdup(const char *str);
 size_t _strlen(const char *str);
 void *_memcpy(void *dest, const void *src, size_t n);
 size_t _strcspn(const char *str, const char *reject);
+int _fprintf(FILE *stream, const char *format, ...);
+int _vfprintf(FILE *stream, const char *format, va_list argptr);
+
 
 #endif /* SHELL_H */
