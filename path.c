@@ -13,6 +13,7 @@ char *path(char *command)
 {
 	char *path = _getenv("PATH");
 	char *pathCopy = _strdup(path);
+	char *ress = NULL;
 
 	if (_strchr(command, ' ') == NULL)
 	{
@@ -26,7 +27,7 @@ char *path(char *command)
 
 			if (access(file_path, F_OK) == 0)
 			{
-				char *ress = _strdup(file_path);
+				ress = _strdup(file_path);
 
 				free(pathCopy);
 				return (ress);
@@ -34,6 +35,9 @@ char *path(char *command)
 			token = strtok(NULL, ":");
 		}
 		free(pathCopy);
+		if (ress)
+			free(ress);
+
 		return (NULL);
 	}
 	else
