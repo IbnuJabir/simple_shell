@@ -49,25 +49,21 @@ void is_command_executable(char *command, char *argv[])
 
 		if (str == NULL)
 		{
-/*			const char* message = " not found";
+			if (!(isatty(_fileno(stdin))))
+			{
+			const char* message = ": not found";
 			write(STDERR_FILENO, argv[0], strlen(argv[0]));
 			write(STDERR_FILENO, ": 1: ", 5);
 			write(STDERR_FILENO, command, strlen(command));
 			write(STDERR_FILENO, message, strlen(message));
-*/
-			_printf("%s: No such file or directory\n", argv[0]);
-
+			}
+			else
+				_printf("%s: No such file or directory\n", argv[0]);
 		}
-
 		else if (_strchr(str, ' ') != NULL)
-		{
 			executeCommand(str, argv);
-
-		}
 		else
-		{
 			executeCommandArg(str, argv);
-		}
 		free(str);
 	}
 }
