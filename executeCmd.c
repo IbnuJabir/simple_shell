@@ -18,7 +18,7 @@ void executeCommand(char *command, char *argv[])
 	while (token != NULL)
 	{
 		ar[i++] = token;
-		token = strtok(NULL, ":");
+		token = strtok(NULL, " ");
 	}
 	ar[i] = NULL;
 
