@@ -13,7 +13,7 @@ void executeCommand(char *command, char *argv[])
 	int i = 0;
 	pid_t pid;
 
-	char *token = strtok(command, ":");
+	char *token = strtok(command, " ");
 
 	while (token != NULL)
 	{

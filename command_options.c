@@ -49,11 +49,13 @@ void is_command_executable(char *command, char *argv[])
 
 		if (str == NULL)
 		{
-			const char* message = " not found";
+/*			const char* message = " not found";
 			write(STDERR_FILENO, argv[0], strlen(argv[0]));
 			write(STDERR_FILENO, ": 1: ", 5);
 			write(STDERR_FILENO, command, strlen(command));
 			write(STDERR_FILENO, message, strlen(message));
+*/
+			_printf("%s: No such file or directory\n", argv[0]);
 
 		}
 
