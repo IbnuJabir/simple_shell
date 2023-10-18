@@ -80,6 +80,8 @@ char *pathArg(char *commandArg)
 				_snprintf(res, result_len, "%s %s", file_path, arg);
 				free(path);
 				return (res);
+				if (res)
+					free(res);
 			}
 			else
 			{
@@ -89,5 +91,6 @@ char *pathArg(char *commandArg)
 		}
 		token = strtok(NULL, ":");
 	}
+	free(path);
 	return (NULL);
 }
