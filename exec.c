@@ -8,8 +8,6 @@
  * @argv: a comand argument
  */
 
-extern char **environ;
-
 void executeCommandArg(char *commandArg, char *argv[])
 {
 	int i = 0;
@@ -34,9 +32,9 @@ void executeCommandArg(char *commandArg, char *argv[])
 	pid = fork();
 	if (pid == 0)
 	{
-		if(execve(arguments[0], arguments, environ) == -1)
-		{	
-			perror(argv[0]);	
+		if (execve(arguments[0], arguments, environ) == -1)
+		{
+			perror(argv[0]);
 			exit(1);
 		}
 	}
@@ -80,28 +78,16 @@ char *pathArg(char *commandArg)
 				char *res = (char *)malloc(result_len);
 
 				_snprintf(res, result_len, "%s %s", file_path, arg);
-				
-				if (commandArg)
-					free(commandArg);
-	
-				if (path)
-					free(path);
-
+				free(path);
 				return (res);
 			}
 			else
-			{	if (commandArg)
-					free(commandArg);
-
-				if (path)
-					free(path);
-
+			{
+				free(path);
 				return (_strdup(file_path));
 			}
 		}
 		token = strtok(NULL, ":");
 	}
-	free(commandArg);
-	free(path);
 	return (NULL);
 }

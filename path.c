@@ -40,27 +40,37 @@ char *path(char *command)
 	{
 		char *cm = pathArg(command);
 
+		free(pathCopy);
 		return (cm);
 	}
 }
 
 /**
- * _strdup - Create a duplicate of a string
+ * _strdup - Duplicate a string
  * @str: The string to duplicate
  *
- * Return: A pointer to the newly allocated duplicate string,
- * or NULL if the allocation fails.
+ * Return: A pointer to the duplicated string or NULL on failure.
  */
 char *_strdup(const char *str)
 {
-	size_t len = _strlen(str) + 1;
-	char *dup = malloc(len);
+	size_t len;
+	char *dup;
+
+	if (str == NULL)
+	{
+		return (NULL);
+	}
+
+	len = strlen(str) + 1;
+	dup = malloc(len);
 
 	if (dup != NULL)
-		_memcpy(dup, str, len);
-
+	{
+		_strcpy(dup, str);
+	}
 	return (dup);
 }
+
 /**
  * _strlen - Calculate the length of a string
  * @str: The string to calculate the length of
@@ -98,4 +108,22 @@ void *_memcpy(void *dest, const void *src, size_t n)
 	}
 
 	return (dest);
+}
+/**
+* _strcpy - Copy a string to a destination buffer
+* @dest: The destination buffer
+* @src: The source string to be copied
+*
+* Return: A pointer to the destination buffer (dest).
+*/
+char *_strcpy(char *dest, const char *src)
+{
+	char *original_dest = dest;
+
+	while ((*dest++ = *src++) != '\0')
+	{
+		/* Copy characters from src to dest until the null terminator is reached */
+	}
+
+	return (original_dest);
 }

@@ -46,9 +46,10 @@ void is_command_executable(char *command, char **argv)
 	else
 	{
 		char *str = path(command);
+
 		if (str == NULL)
 		{
-			_fprintf(stderr, "%s: 1: %s: not found", argv[0], command);
+			_fprintf(stderr, "%s: 1: %s: not found\n", argv[0], command);
 		}
 
 		else if (_strchr(str, ' ') != NULL)
@@ -60,6 +61,7 @@ void is_command_executable(char *command, char **argv)
 		{
 			executeCommandArg(str, argv);
 		}
+		free(str);
 	}
 }
 

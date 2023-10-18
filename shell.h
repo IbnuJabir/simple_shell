@@ -14,7 +14,6 @@
 #define MAX_PATH_LENGTH 1024
 
 extern char **environ;
-
 /* prototypes */
 
 void search_file_in_path(const char *filename, const char *path);
@@ -65,6 +64,7 @@ void *_memcpy(void *dest, const void *src, size_t n);
 size_t _strcspn(const char *str, const char *reject);
 int _fprintf(FILE *stream, const char *format, ...);
 int _vfprintf(FILE *stream, const char *format, va_list argptr);
+char *_strcpy(char *dest, const char *src);
 
 
 #endif /* SHELL_H */

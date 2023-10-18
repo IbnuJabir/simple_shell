@@ -5,7 +5,7 @@
  * @format: The format string.
  * @...: Optional arguments to format and write.
  *
- * Returns: Number of characters written on success, a negative value on failure.
+ * Return: Number of characters on success, a negative value on failure.
  */
 int _fprintf(FILE *stream, const char *format, ...)
 {
@@ -19,12 +19,12 @@ int _fprintf(FILE *stream, const char *format, ...)
 	return (result);
 }
 /**
- * _vfprintf - Custom function for formatted output to a stream with a va_list argument.
+ * _vfprintf - Custom function for formatted output.
  * @stream: The output stream.
  * @format: The format string.
  * @argptr: The va_list argument.
  *
- * Returns: Number of characters written on success, a negative value on failure.
+ * Return: Number of chars written on success, a negative value on failure.
  */
 int _vfprintf(FILE *stream, const char *format, va_list argptr)
 {
@@ -41,12 +41,14 @@ int _vfprintf(FILE *stream, const char *format, va_list argptr)
 				case 'd':
 				{
 					int value = va_arg(argptr, int);
+
 					count += fprintf(stream, "%d", value);
 					break;
 				}
 				case 's':
 				{
 					char *value = va_arg(argptr, char *);
+
 					count += fprintf(stream, "%s", value);
 					break;
 				}

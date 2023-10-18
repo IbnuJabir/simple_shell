@@ -7,8 +7,6 @@
  * @argv: a comand argument
  */
 
-extern char **environ;
-
 void executeCommand(char *command, char *argv[])
 {
 	char *ar[MAX_ARGS];
