@@ -27,7 +27,7 @@ void exit_shell(char *command)
  * Description: if found executes else prints error associated with the command
  */
 
-void is_command_executable(char *command, char **argv)
+void is_command_executable(char *command, char *argv[])
 {
 	char firstChar = command[0];
 

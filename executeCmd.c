@@ -13,12 +13,12 @@ void executeCommand(char *command, char *argv[])
 	int i = 0;
 	pid_t pid;
 
-	char *token = strtok(command, " \n");
+	char *token = strtok(command, ":");
 
 	while (token != NULL)
 	{
 		ar[i++] = token;
-		token = strtok(NULL, " \n");
+		token = strtok(NULL, ":");
 	}
 	ar[i] = NULL;
 
@@ -30,7 +30,7 @@ void executeCommand(char *command, char *argv[])
 	}
 	if (pid == 0)
 	{
-		if (execve(ar[0], ar, environ) == -1)
+		if (execve(ar[0], ar, NULL) == -1)
 		{
 			perror(argv[0]);
 			exit(1);
