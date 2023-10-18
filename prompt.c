@@ -9,7 +9,7 @@ void print_prompt(void)
 {
 	const char *msg = "#cisfun ";
 
-	if (isatty(fileno(stdin)))
+	if (isatty(_fileno(stdin)))
 	{
 		_puts(msg);
 		fflush(stdout);
