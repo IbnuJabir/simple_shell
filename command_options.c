@@ -49,7 +49,12 @@ void is_command_executable(char *command, char **argv)
 
 		if (str == NULL)
 		{
-			_fprintf(stderr, "%s: 1: %s: not found\n", argv[0], command);
+			const char* message = " not found";
+			write(STDERR_FILENO, argv[0], strlen(argv[0]));
+			write(STDERR_FILENO, ": 1: ", 5);
+			write(STDERR_FILENO, command, strlen(command));
+			write(STDERR_FILENO, message, strlen(message));
+
 		}
 
 		else if (_strchr(str, ' ') != NULL)
