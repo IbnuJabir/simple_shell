@@ -7,7 +7,7 @@
 
 void print_prompt(void)
 {
-	const char *msg = "#cisfun ";
+	const char *msg = "#cisfun$ ";
 
 	if (isatty(_fileno(stdin)))
 	{
