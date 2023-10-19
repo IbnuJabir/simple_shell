@@ -46,27 +46,37 @@ void is_command_executable(char *command, char *argv[])
 	}
 	else
 	{
-		char *str = path(command);
+	char *str = path(command);
 
-		if (str == NULL)
+	if (str == NULL)
+	{
+		static int error_counter = 0;
+		error_counter++;
+
+		if (!isatty(_fileno(stdin)))
 		{
-			if (!(isatty(_fileno(stdin))))
-			{
 			const char *message = ": not found";
-
-			write(STDERR_FILENO, argv[0], strlen(argv[0]));
-			write(STDERR_FILENO, ": 1: ", 5);
-			write(STDERR_FILENO, command, strlen(command));
-			write(STDERR_FILENO, message, strlen(message));
-			}
-			else
-				_printf("%s: No such file or directory\n", argv[0]);
+			write(STDERR_FILENO, argv[0], _strlen(argv[0]));
+			write(STDERR_FILENO, ": ", 2);
+			write(STDERR_FILENO, _itoa(error_counter), _strlen(_itoa(error_counter)));
+			write(STDERR_FILENO, ": ", 2);
+			write(STDERR_FILENO, command, _strlen(command));
+			write(STDERR_FILENO, message, _strlen(message));
 		}
-		else if (_strchr(str, ' ') != NULL)
-			executeCommand(str, argv);
 		else
-			executeCommandArg(str, argv);
-		free(str);
+		{
+			_printf("%s: No such file or directory\n", argv[0]);
+		}
 	}
+	else if (_strchr(str, ' ') != NULL)
+	{
+		executeCommand(str, argv);
+	}
+	else
+	{
+		executeCommandArg(str, argv);
+	}
+	free(str);
 }
-
+	
+}

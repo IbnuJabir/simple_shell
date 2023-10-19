@@ -65,6 +65,7 @@ size_t _strcspn(const char *str, const char *reject);
 int _fprintf(FILE *stream, const char *format, ...);
 int _vfprintf(FILE *stream, const char *format, va_list argptr);
 char *_strcpy(char *dest, const char *src);
+char *_itoa(int n);
 
 
 #endif /* SHELL_H */
