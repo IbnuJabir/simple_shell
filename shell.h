@@ -28,7 +28,7 @@ int _fileno(FILE *stream);
 void print_prompt(void);
 void exit_shell(char *command);
 void is_command_executable(char *command, char **argv);
-
+void trim_start(char **);
 
 
 /*  break    */

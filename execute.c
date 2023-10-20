@@ -20,6 +20,7 @@ void execute(char *argv[])
 			break;
 		}
 		command[_strcspn(command, "\n")] = '\0';
+		trim_start(&command); /**removes white space from the begginning **/
 
 		if (*command == '\0')
 			continue;
