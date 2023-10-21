@@ -24,7 +24,8 @@ void exec(char *command);
 char *path(char *command);
 char *pathArg(char *commandArg);
 void executeCommandArg(char *commandArg, char *argv[]);
-void printEnvironment(void);
+/**void printEnvironment(void);**/
+int printenv(char **args, char __attribute__((__unused__)) **front);
 int _fileno(FILE *stream);
 void print_prompt(void);
 void exit_shell(char *command);

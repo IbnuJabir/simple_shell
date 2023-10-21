@@ -31,7 +31,7 @@ void execute(char *argv[])
 
 		if (_strcmp(command, "env") == 0)
 		{
-			printEnvironment();
+			printenv(environ, NULL);
 		}
 
 		is_command_executable(command, argv);

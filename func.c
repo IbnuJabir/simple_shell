@@ -46,14 +46,14 @@ int _vsnprintf(char *str, size_t size, const char *format, va_list args)
 			{
 				case 's':
 				{
-					char *arg = va_arg(args, char *);
+				char *arg = va_arg(args, char *);
 
 					while (*arg && written < capacity)
 					{
 						*str++ = *arg++;
 						++written;
 					}
-					break;
+						break;
 				}
 				default:
 					*str++ = *format;
@@ -92,18 +92,34 @@ int _snprintf(char *buffer, size_t size, const char *format, ...)
 	return (result);
 }
 
-/**
- * printEnvironment - Prints the current environment variables
- */
-void printEnvironment(void)
-{
-	char **env = environ;
 
-	while (*env != NULL)
+/**
+ * printenv - Prints the current environment.
+ * @args: An array of arguments passed to the shell.
+ * @front: A double pointer to the beginning of args.
+ *
+ * Return: If an error occurs - -1.
+ *	   Otherwise - 0.
+ *
+ * Description: Prints one variable per line in the
+ *              format 'variable'='value'.
+ */
+int printenv(char **args, char __attribute__((__unused__)) **front)
+{
+	int index;
+	char nc = '\n';
+
+	if (!environ)
+		return (-1);
+
+	for (index = 0; environ[index]; index++)
 	{
-		_printf("%s\n", *env);
-		env++;
+		write(STDOUT_FILENO, environ[index], _strlen(environ[index]));
+		write(STDOUT_FILENO, &nc, 1);
 	}
+
+	(void)args;
+	return (0);
 }
 
 /**
