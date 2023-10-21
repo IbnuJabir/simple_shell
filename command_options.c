@@ -33,6 +33,11 @@ void exit_shell(char *command)
 		}
 
 	}
+
+	if (command)
+		free(command);
+	if (command_dup)
+		free(command_dup);
 }
 
 
