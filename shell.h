@@ -33,7 +33,9 @@ void trim_start(char **);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 void assign_linepointer(char **linepointer, size_t *n, char *buffer, size_t b);
 ssize_t _getline(char **linepointer, size_t *n, FILE *stream);
-
+int token_t_len(char *str, char *delim);
+int count_token_ts(char *str, char *delim);
+char **_strtok(char *line, char *delim);
 
 /*  break    */
 
