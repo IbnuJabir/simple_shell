@@ -34,7 +34,7 @@ void is_command_executable(char *command, char *argv[])
 
 	if (firstChar == '/' || (firstChar == '.' && command[1] == '/'))
 	{
-		if (_strchr(command, ' ') != NULL)
+		if (_strchr(command, ' ') == NULL)
 		{
 			executeCommand(command, argv);
 		}
@@ -68,7 +68,7 @@ void is_command_executable(char *command, char *argv[])
 			_printf("%s: No such file or directory\n", argv[0]);
 		}
 	}
-	else if (_strchr(str, ' ') != NULL)
+	else if (_strchr(str, ' ') == NULL)
 	{
 		executeCommand(str, argv);
 	}

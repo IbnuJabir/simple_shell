@@ -12,6 +12,7 @@
 
 #define MAX_ARGS 64
 #define MAX_PATH_LENGTH 1024
+#define BUFFER_SIZE 1024
 
 extern char **environ;
 /* prototypes */
@@ -29,6 +30,7 @@ void print_prompt(void);
 void exit_shell(char *command);
 void is_command_executable(char *command, char **argv);
 void trim_start(char **);
+
 
 
 /*  break    */
@@ -66,6 +68,7 @@ int _fprintf(FILE *stream, const char *format, ...);
 int _vfprintf(FILE *stream, const char *format, va_list argptr);
 char *_strcpy(char *dest, const char *src);
 char *_itoa(int n);
+ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 
 
 #endif /* SHELL_H */

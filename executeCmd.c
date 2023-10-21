@@ -30,7 +30,7 @@ void executeCommand(char *command, char *argv[])
 	}
 	if (pid == 0)
 	{
-		if (execve(ar[0], ar, NULL) == -1)
+		if (execve(ar[0], ar, environ) == -1)
 		{
 			perror(argv[0]);
 			exit(1);
