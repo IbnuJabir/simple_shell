@@ -16,7 +16,9 @@ void execute(char *argv[])
 
 		if (getline(&command, &len, stdin) == -1)
 		{
-			_printf("\n");
+			if (isatty(_fileno(stdin)))
+				_printf("\n");
+
 			break;
 		}
 		command[_strcspn(command, "\n")] = '\0';
