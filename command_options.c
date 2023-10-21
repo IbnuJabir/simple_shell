@@ -8,14 +8,30 @@
 
 void exit_shell(char *command)
 {
+	char *command_dup = _strdup(command);
+	char *token = strtok(command_dup, " \t");
+	int status = 0;
 
 	if (_strchr(command, ' ') == NULL)
 	{
 		if (_strcmp(command, "exit") == 0)
 		{
 			free(command);
+			free(command_dup);
 			exit(0);
 		}
+	}
+	else
+	{
+		token = strtok(NULL, command_dup);
+
+		if (token)
+		{
+			status = atoi(token);
+			free(command_dup);
+			exit(status);		
+		}
+
 	}
 }
 
