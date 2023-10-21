@@ -9,7 +9,7 @@
 void exit_shell(char *command)
 {
 	char *command_dup = _strdup(command);
-	char **token = _strtok(command_dup, " \t");
+	char *token = strtok(command_dup, " \t");
 	int status = 0;
 
 	if (_strchr(command, ' ') == NULL)
@@ -23,17 +23,17 @@ void exit_shell(char *command)
 	}
 	else
 	{
-		token = _strtok(NULL, command_dup);
+		token = strtok(NULL, command_dup);
 
 		if (token)
 		{
 			status = atoi(token);
 			free(command_dup);
-			exit(status);		
+			exit(status);
 		}
 
 	}
-	
+
 	free(command_dup);
 }
 
@@ -47,8 +47,8 @@ void exit_shell(char *command)
  */
 
 void is_command_executable(char *command, char *argv[])
-{
-	char firstChar = command[0];
+{	char firstChar = command[0];
+	static int error_counter;
 
 	if (firstChar == '/' || (firstChar == '.' && command[1] == '/'))
 	{
@@ -57,44 +57,35 @@ void is_command_executable(char *command, char *argv[])
 			executeCommand(command, argv);
 		}
 		else
-		{
 			executeCommandArg(command, argv);
-		}
-
 	}
 	else
-	{
-	char *str = path(command);
+	{	char *str = path(command);
 
-	if (str == NULL)
-	{
-		static int error_counter = 0;
-		error_counter++;
+		if (str == NULL)
+		{	error_counter = 0;
+			error_counter++;
 
-		if (!isatty(_fileno(stdin)))
-		{
-			const char *message = ": not found";
-			write(STDERR_FILENO, argv[0], _strlen(argv[0]));
-			write(STDERR_FILENO, ": ", 2);
-			write(STDERR_FILENO, _itoa(error_counter), _strlen(_itoa(error_counter)));
-			write(STDERR_FILENO, ": ", 2);
-			write(STDERR_FILENO, command, _strlen(command));
-			write(STDERR_FILENO, message, _strlen(message));
+			if (!isatty(_fileno(stdin)))
+			{	const char *message = ": not found";
+
+				write(STDERR_FILENO, argv[0], _strlen(argv[0]));
+				write(STDERR_FILENO, ": ", 2);
+				write(STDERR_FILENO, _itoa(error_counter), _strlen(_itoa(error_counter)));
+				write(STDERR_FILENO, ": ", 2);
+				write(STDERR_FILENO, command, _strlen(command));
+				write(STDERR_FILENO, message, _strlen(message));
+			}
+			else
+				_printf("%s: No such file or directory\n", argv[0]);
+		}
+		else if (_strchr(str, ' ') == NULL)
+		{	executeCommand(str, argv);
 		}
 		else
-		{
-			_printf("%s: No such file or directory\n", argv[0]);
-		}
+			executeCommandArg(str, argv);
+
+		free(str);
 	}
-	else if (_strchr(str, ' ') == NULL)
-	{
-		executeCommand(str, argv);
-	}
-	else
-	{
-		executeCommandArg(str, argv);
-	}
-	free(str);
-}
-	
+
 }
