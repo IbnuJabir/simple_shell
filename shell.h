@@ -30,7 +30,9 @@ void print_prompt(void);
 void exit_shell(char *command);
 void is_command_executable(char *command, char **argv);
 void trim_start(char **);
-
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+void assign_linepointer(char **linepointer, size_t *n, char *buffer, size_t b);
+ssize_t _getline(char **linepointer, size_t *n, FILE *stream);
 
 
 /*  break    */
