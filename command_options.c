@@ -9,7 +9,7 @@
 void exit_shell(char *command)
 {
 	char *command_dup = _strdup(command);
-	char *token = strtok(command_dup, " \t");
+	char **token = _strtok(command_dup, " \t");
 	int status = 0;
 
 	if (_strchr(command, ' ') == NULL)
@@ -23,7 +23,7 @@ void exit_shell(char *command)
 	}
 	else
 	{
-		token = strtok(NULL, command_dup);
+		token = _strtok(NULL, command_dup);
 
 		if (token)
 		{
@@ -33,11 +33,8 @@ void exit_shell(char *command)
 		}
 
 	}
-
-	if (command)
-		free(command);
-	if (command_dup)
-		free(command_dup);
+	
+	free(command_dup);
 }
 
 
