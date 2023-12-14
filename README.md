@@ -1,6 +1,6 @@
 # Simple Shell Project - ALX
 
-This repository contains the Simple Shell project, developed by the ALX SE team project.
+This repository contains the Simple Shell project, developed by Kedir Jabir.
 
 ## Description
 The Simple Shell project is a command-line interpreter that allows users to execute commands and interact with the operating system. It supports basic shell functionalities, such as executing commands, handling arguments, and managing environment variables.
